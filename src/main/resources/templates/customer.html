@@ -19,22 +19,27 @@
 
 	<div class="container">
 
-		<a th:href="@{/customers/new/}" class="btn btn-primary">Nuevo</a>
-		
-		<table>
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Price</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="c: ${customers}">
-					<td th:text="${c.name}">Henry</td>
-					<td th:text="${c.dni}">12345678</td>
-				</tr>
-			</tbody>
-		</table>
+		<a th:href="@{/customers/list/}" class="btn btn-primary">Regresar</a>
+
+		<form th:action="@{/customers/save/}" th:object="${customer}"
+		    method="post">
+		    
+			<div class="form-group">
+				<label for="txtName">Nombre</label>
+			    <input
+					type="text" th:field="*{name}" class="form-control" id="txtName"
+					placeholder="Nombre">
+			</div>
+			
+			<div class="form-group">
+				<label for="txtDni">Dni</label> 
+				 <input
+					type="text" th:field="*{dni}" class="form-control" id="txtDni"
+					placeholder="Dni">
+			</div>
+			
+			<input type="submit" class="btn btn-primary">Registrar</input>
+		</form>
 
 
 	</div>
